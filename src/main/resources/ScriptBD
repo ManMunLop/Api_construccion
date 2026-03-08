@@ -1,0 +1,54 @@
+Drop database if exists construccion;
+create database construccion;
+use construccion;
+
+CREATE TABLE empresa (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    CIF VARCHAR(9) UNIQUE,
+    nombre VARCHAR(250),
+    grupos INT,
+    trabajadores INT
+);
+
+CREATE TABLE obra (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    Ubicacion VARCHAR(250),
+    plantel INT,
+    id_empresa BIGINT,
+    fecha_inicio DATE,
+    presupuesto DECIMAL(12,2),
+    CONSTRAINT fk_id_empresa
+        FOREIGN KEY (id_empresa)
+        REFERENCES empresa(id)
+);
+
+-- INSERTS EMPRESA
+INSERT INTO empresa (CIF, nombre, grupos, trabajadores) VALUES
+('A12345678', 'Construcciones Atlas S.L.', 3, 120),
+('B87654321', 'Infraestructuras del Norte S.A.', 5, 340),
+('C11223344', 'Edificaciones Rivera S.L.', 2, 75),
+('D44332211', 'Obras y Servicios Mediterráneo S.A.', 4, 210),
+('E99887766', 'Proyectos Urbanos del Sur S.L.', 1, 45),
+('F55443322', 'Construcciones Delta S.L.', 2, 95),
+('G66778899', 'Ingeniería y Obras Central S.A.', 6, 410),
+('H22334455', 'Reformas Integrales López S.L.', 1, 38),
+('I33445566', 'Infraestructuras del Levante S.A.', 4, 275),
+('J77889900', 'Desarrollos Urbanísticos Sierra S.L.', 3, 150);
+
+-- INSERTS OBRA
+INSERT INTO obra (Ubicacion, plantel, id_empresa, fecha_inicio, presupuesto) VALUES
+('Madrid', 25, 1, '2024-01-15', 1500000.00),
+('Barcelona', 40, 2, '2023-09-01', 3200000.00),
+('Valencia', 18, 3, '2024-03-10', 890000.00),
+('Sevilla', 30, 4, '2023-11-20', 2100000.00),
+('Bilbao', 12, 5, '2024-05-05', 560000.00),
+('Zaragoza', 22, 6, '2024-02-12', 1250000.00),
+('Málaga', 35, 7, '2023-10-18', 2780000.00),
+('Alicante', 10, 8, '2024-04-01', 430000.00),
+('Granada', 28, 9, '2023-12-05', 1950000.00),
+('Valladolid', 16, 10, '2024-06-15', 720000.00),
+('Toledo', 20, 1, '2024-07-01', 980000.00),
+('Córdoba', 26, 2, '2023-08-14', 1670000.00),
+('Santander', 14, 3, '2024-01-22', 650000.00),
+('Murcia', 32, 4, '2023-11-30', 2430000.00),
+('Pamplona', 18, 5, '2024-03-18', 870000.00);

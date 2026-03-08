@@ -2,6 +2,7 @@ package ies_alcores.api_construccion.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
@@ -20,5 +21,6 @@ public class Obra {
     private BigDecimal presupuesto;
 
     @ManyToOne
-    private Empresa id_empresa;
+    @JoinColumn(name = "id_empresa")
+    private Empresa empresa;
 }

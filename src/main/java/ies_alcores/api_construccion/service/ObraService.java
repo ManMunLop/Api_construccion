@@ -14,5 +14,22 @@ public class ObraService {
     private ObraRepository obraRepository;
 
     public List<Obra> findAll() {
-        return this.obraRepository.findAll(); }
+        return this.obraRepository.findAllObras();
+    }
+
+    public Obra findById(Long id) {
+        return this.obraRepository.findObraById(id);
+    }
+
+    public List<Obra> findByEmpresa(Long empresaId) {
+        return this.obraRepository.findObrasByEmpresa(empresaId);
+    }
+
+    public Obra save(Obra obra) {
+        return this.obraRepository.save(obra);
+    }
+
+    public void delete(Long id) {
+        this.obraRepository.deleteById(id);
+    }
 }
